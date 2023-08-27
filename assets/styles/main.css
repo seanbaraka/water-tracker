@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;400;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    font-family: 'Inconsolata', monospace;
+}
+
+.input {
+    @apply border p-3 text-sm outline-none w-full
+}
+
+.primary-btn {
+    @apply p-4 bg-slate-700 text-white font-semibold w-full text-xs cursor-pointer
+}
