@@ -5,6 +5,9 @@ export default defineNuxtConfig({
   },
   devtools: { enabled: true },
   ssr: false,
-  modules: ["@nuxtjs/tailwindcss"],
+  modules: ["@nuxtjs/tailwindcss", "nuxt-mongoose"],
+  mongoose: {
+    uri: process.env.MONGO_URL,
+  },
   css: ["~/assets/styles/main.css"],
 });

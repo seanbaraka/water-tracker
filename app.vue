@@ -2,10 +2,8 @@
 </script>
 
 <template>
-  <main class="m-auto max-w-md h-screen flex justify-center items-center">
-    <div class="app-screen">
-      <Navigation />
-      <RouterView class="min-h-[50vh]" />
-    </div>
+  <main class="m-auto max-w-screen-lg h-screen">
+    <Navigation />
+    <NuxtPage />
   </main>
 </template>
