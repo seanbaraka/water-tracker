@@ -57,7 +57,11 @@ export const columns: ColumnDef<Payment>[] = [
         () => ["Date", h(ArrowUpDown, { class: "ml-2 h-4 w-4" })]
       );
     },
-    cell: ({ row }) => h("div", { class: "lowercase" }, row.getValue("date")),
+    cell: ({ row }) => {
+      const formatted = quickFormat(row.getValue("date"));
+      console.log("Formatted Date", formatted);
+      return h("div", { class: "lowercase" }, formatted);
+    },
   },
   {
     id: "actions",

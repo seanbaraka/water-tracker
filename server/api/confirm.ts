@@ -21,8 +21,15 @@ enum TransactionStatus {
 export default defineEventHandler(async (event) => {
   console.log("** Received Payment **");
   const trans = await readBody(event);
-  const payload = trans.payment;
-  console.log(payload);
+  const payload: PaymentConfirmationDto = trans.payment;
+  //   send the payment record to the admin
+  const recepientsList = process.env.RECEPIENTS ?? "";
+  const recepients = recepientsList.split(",");
+  const message = await sendMessage({
+    recepients: recepients,
+    content: `Payment ${payload.TransID} acknowledged. ${payload.BillRefNumber} utility account will be updated shortly. Indesign Makumbi Park Management.`,
+    from: "",
+  });
   try {
     const pay = new PaymentTransaction({
       id: payload.TransID,
@@ -31,7 +38,6 @@ export default defineEventHandler(async (event) => {
       phoneNumber: payload.MSISDN,
       date: payload.TransTime,
     });
-    console.log(pay);
     const savePayment = await pay.save();
     return { status: 200, data: savePayment, code: TransactionStatus.SUCCESS };
   } catch (e: any) {

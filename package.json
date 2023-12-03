@@ -24,8 +24,11 @@
     "africastalking": "^0.6.5",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
+    "dayjs": "^1.11.10",
     "lucide-vue-next": "^0.294.0",
     "radix-vue": "^1.2.3",
+    "socket.io": "^4.7.2",
+    "socket.io-client": "^4.7.2",
     "tailwind-merge": "^2.1.0",
     "tailwindcss-animate": "^1.0.7"
   }

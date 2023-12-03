@@ -5,7 +5,13 @@ const client = AfricasTalking({
   username: process.env.AT_USERNAME_ARTEMIS ?? "",
 });
 
-export async function sendMessage(message: any) {
+export interface ATMessage {
+  recepients: string | string[];
+  content: string;
+  from: string;
+}
+
+export async function sendMessage(message: ATMessage) {
   try {
     return await client.SMS.send({
       to: message.recepients,
