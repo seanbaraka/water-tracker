@@ -23,14 +23,15 @@ export default defineEventHandler(async (event) => {
   const payload = await readBody<PaymentConfirmationDto>(event);
   console.log(payload);
   try {
-    const doc = await PaymentTransaction.create({
+    const pay = new PaymentTransaction({
       id: payload.TransID,
       amount: payload.TransAmount,
       houseNumber: payload.BillRefNumber,
       phoneNumber: payload.MSISDN,
       date: payload.TransTime,
     });
-    const savePayment = await PaymentTransaction.insertMany(doc);
+
+    const savePayment = await pay.save();
     return { status: 200, data: savePayment, code: TransactionStatus.SUCCESS };
   } catch (e: any) {
     console.log("** An error occured when processing the payment **");
