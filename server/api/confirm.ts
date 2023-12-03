@@ -30,7 +30,7 @@ export default defineEventHandler(async (event) => {
       phoneNumber: payload.MSISDN,
       date: payload.TransTime,
     });
-
+    console.log(pay);
     const savePayment = await pay.save();
     return { status: 200, data: savePayment, code: TransactionStatus.SUCCESS };
   } catch (e: any) {
