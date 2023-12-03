@@ -20,7 +20,8 @@ enum TransactionStatus {
 }
 export default defineEventHandler(async (event) => {
   console.log("** Received Payment **");
-  const payload = await readBody<PaymentConfirmationDto>(event);
+  const trans = await readBody(event);
+  const payload = trans.payment;
   console.log(payload);
   try {
     const pay = new PaymentTransaction({
